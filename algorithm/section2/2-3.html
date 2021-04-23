@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 아 이거 그냥 A의 입장에서만 생각하면 되는거였구나 .... 어리석었다.
+      // 나는 양쪽을 다 고려하고 둘이 빼서 뭘 어떻게 하는 건가 했는데 그냥 한 명의 입장에서만 우선 생각해보면
+      // 되는거였다.
+      function solution(n, a, b) {
+        for (let i = 0; i < n; i++) {
+          if (a[i] === b[i]) {
+            console.log("D");
+          } else if (a[i] === 1 && b[i] === 3) {
+            console.log("A");
+          } else if (a[i] === 2 && b[i] === 1) {
+            console.log("A");
+          } else if (a[i] === 3 && b[i] === 2) {
+            console.log("A");
+          } else {
+            console.log("B");
+          }
+        }
+      }
+
+      console.log(solution(5, [2, 3, 3, 1, 3], [1, 1, 2, 2, 3]));
+    </script>
+  </body>
+</html>
