@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "YES";
+        s = s.toLowerCase();
+        let length = s.length;
+        let middle = Math.floor(s.length / 2);
+
+        for (let i = 0; i < middle; i++) {
+          if (s[i] !== s[length - 1 - i]) {
+            answer = "NO";
+            break;
+          }
+        }
+
+        return answer;
+      }
+
+      /*
+      // 다르게 풀 수 있는 방식
+      function solution(s) {
+        let answer = "YES";
+        s = s.toLowerCase();
+        if (s.split("").reverse().join("") != s) return "NO";
+        return answer;
+      }*/
+
+      let str = "godooG";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

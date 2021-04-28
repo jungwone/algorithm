@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // parseInt 하면 정수화되서 앞에 0이 붙어있어도 날아가게 되는구만? 아주 좋군.
+      // isNaN 메서드도 알아두면 좋겠다.
+      function solution(str) {
+        let answer = "";
+        let regex = /[^0-9]/g;
+        answer = str.replace(regex, "");
+
+        return parseInt(answer);
+
+        /* 선생님이 푼 코드 - 1.
+        let answer = '';
+        for(let x of str) {
+            if(!isNaN(x)) {
+                answer += x;
+            }
+        }
+
+        선생님이 푼 코드 - 2
+        let answer = 0;
+        if(!isNaN(x)) answer = answer * 10 + Number(x) ㅋㅋㅋ Number를 써버리고~
+        */
+      }
+
+      let str = "g0en2T0s8eSoft";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
