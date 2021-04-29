@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        let answer = [];
+
+        for (let i = 0; i < s.length; i++) {
+          let forward = 1000;
+          let backward = 1000;
+
+          for (let j = i; j > 0; j--) {
+            if (s[j] === t) {
+              forward = i - j;
+              break;
+            }
+          }
+
+          for (let k = i; k < s.length; k++) {
+            if (s[k] === t) {
+              backward = k - i;
+              break;
+            }
+          }
+          answer.push(Math.min(forward, backward));
+        }
+
+        return answer;
+      }
+
+      let str = "teachermode";
+      console.log(solution(str, "e"));
+    </script>
+  </body>
+</html>
