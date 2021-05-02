@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "";
+        let count = 1;
+
+        for (let i = 0; i < s.length; i++) {
+          if (i !== s.length - 1 && s[i] === s[i + 1]) {
+            count++;
+          } else {
+            if (count !== 1) {
+              answer += s[i] + count;
+            } else {
+              answer += s[i];
+            }
+            count = 1;
+          }
+        }
+        return answer;
+      }
+
+      /*
+        선생님은 s=s+" "; 이렇게 해서 length가 넘어갈 일이 없게 설계하셨군.
+        그리고 
+        else {
+            answer += s[i];
+            if(cnt>1) answer += String(cnt);
+            cnt = 1;
+        }
+        뭐 내가 짠거랑 거의 99% 비슷하다.
+      */
+
+      let str = "KKHSSSSSSSE";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
