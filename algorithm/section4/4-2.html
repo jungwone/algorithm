@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function isPrimeNumber(number) {
+        if (number === 1) {
+          return false;
+        }
+        if (number === 2) {
+          return true;
+        }
+
+        for (let i = 2; i <= Number(number / 2); i++) {
+          if (number % i === 0) {
+            return false;
+          }
+        }
+
+        return true;
+      }
+
+      function solution(arr) {
+        let answer = [];
+        for (let num of arr) {
+          let temp = String(num).split("");
+          temp = temp.reverse();
+          let reverseNumber = Number(temp.join(""));
+          if (isPrimeNumber(reverseNumber)) {
+            answer.push(reverseNumber);
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [32, 55, 62, 20, 250, 370, 200, 30, 100];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
