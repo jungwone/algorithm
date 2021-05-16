@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(test) {
+        let answer = 0;
+        let n = arr[0].length; // 학생 수
+        let m = arr.length; // 테스트 수
+
+        for (let i = 1; i <= n; i++) {
+          for (let j = 1; j <= n; j++) {
+            let count = 0; // 멘토 멘티가 정해지면 카운트를 0으로 초기화
+            for (let s = 0; s < m; s++) {
+              let first = 0;
+              let second = 0;
+
+              for (let k = 0; k < n; k++) {
+                if (arr[s][k] === i) first = k;
+                if (arr[s][k] === j) second = k;
+              }
+              if (first < second) count++;
+            }
+            if (count === m) {
+              answer++;
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [
+        [3, 4, 1, 2],
+        [4, 3, 2, 1],
+        [3, 1, 4, 2],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
