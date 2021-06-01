@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+        let sMap = new Map();
+        let max = 0;
+
+        for (let str of s) {
+          let res = sMap.get(str);
+          if (!res) {
+            sMap.set(str, 1);
+          } else {
+            sMap.set(str, (res += 1));
+          }
+        }
+        max = Number.MIN_SAFE_INTEGER;
+        sMap.forEach((value, key) => {
+          if (max < value) {
+            max = value;
+            answer = key;
+          }
+        });
+
+        return answer;
+      }
+
+      let str = "BACBACCACCBDEDE";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
