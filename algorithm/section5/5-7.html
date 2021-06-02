@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(str1, str2) {
+        let answer = "YES";
+        let sH = new Map();
+
+        for (let i of str1 + str2) {
+          sH.set(i, sH.get(i) ? sH.get(i) + 1 : 1);
+        }
+
+        sH.forEach((value) => {
+          if (value % 2 !== 0) {
+            answer = "NO";
+            return;
+          }
+        });
+
+        return answer;
+      }
+
+      let a = "AbaAeCe";
+      let b = "baeeACA";
+
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
