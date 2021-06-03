@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function compare(map1, map2) {
+        if (map1.size !== map2.size) return false;
+        for (let [key, value] of map1) {
+          // map1의 value와 같지 않다면 개수가 다르다는 뜻임.. 아하
+          if (!map2.has(key) || map2.get(key) !== value) return false;
+        }
+        return true;
+      }
+
+      function solution(s, t) {
+        let answer = 0;
+        let tH = new Map();
+        let sH = new Map();
+
+        for (let str of t) {
+          if (sH.has(str)) {
+            sH.set(str, sH.get(str) + 1);
+          } else {
+            sH.set(str, 1);
+          }
+        }
+
+        for (let i = 0; i < t.length - 1; i++) {
+          if (tH.has(s[i])) {
+            tH.set(s[i], tH.get(s[i] + 1));
+          } else {
+            tH.set(s[i], 1);
+          }
+        }
+
+        let rt = t.length - 1; // 'abc'  , 3
+        for (let lt = 0; lt <= s.length - t.length; lt++) {
+          if (tH.has(s[rt])) {
+            tH.set(s[rt], tH.get(s[rt]) + 1);
+          } else {
+            tH.set(s[rt], 1);
+          }
+
+          if (compare(sH, tH)) {
+            answer++;
+          }
+          rt++;
+          tH.set(s[lt], tH.get(s[lt]) - 1);
+          if (tH.get(s[lt]) === 0) tH.delete(s[lt]);
+        }
+
+        return answer;
+      }
+
+      let a = "bacaAacba";
+      let b = "abc";
+      //   let a = "defabcdeabf";
+      //   let b = "ab";
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
+
+<!-- b.forEach((value, key) => {
+  if (!a.has(key) || a.get(key) === 0) {
+    flag = false;
+    return;
+  }
+  if (a.has(key)) {
+    a.set(key, a.get(key) - 1);
+  }
+});
+return flag; -->
+
+<!-- for (let i = 0; i <= s.length - t.length; i++) {
+    for (let j = i; j < i + t.length; j++) {
+      if (tH.has(s[j])) {
+        tH.set(s[j], tH.get(s[j]) + 1);
+      } else {
+        tH.set(s[j], 1);
+      }
+    }
+
+    if (compare(tH, sH)) {
+      answer++;
+    }
+    tH.clear();
+  } -->
