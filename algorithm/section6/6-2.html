@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+        let stack = []; // 괄호만을 위한 스택
+
+        for (let str of s) {
+          if (str === ")") while (stack.pop() !== "(");
+          else stack.push(str);
+        }
+
+        /* 이 코드는 내가 짠 코드. 근데 생각해보니까 while문을 저렇게 복잡하게 갈 필요가 없다.
+        for (let str of s) {
+          if (str !== ")") stack.push(str);
+          else {
+            while (true) {
+              let lastElem = stack[stack.length - 1];
+              stack.pop();
+              if (lastElem === "(" || stack.length === 0) break;
+            }
+          }
+        }*/
+
+        answer = stack.join("");
+
+        return answer;
+      }
+
+      let str = "(A(BC)D)EF(G(H)(IJ)K)LM(N)";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
