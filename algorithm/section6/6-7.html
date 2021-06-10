@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(need, plan) {
+        let answer = "YES";
+        let queue = need.split("");
+
+        /*
+        * 이렇게 실행하면 만약에 필수 과목이 엉뚱한게 등장하면 무한루프를 돌 가능성이 존재하긴 함
+        while (queue.length) {
+          for (let subject of plan) {
+            if (!queue.includes(subject)) continue;
+            if (queue.includes(subject)) {
+              if (queue[0] !== subject) return "NO";
+              else queue.shift();
+            }
+          }
+        }
+        */
+
+        for (let subject of plan) {
+          if (queue.includes(subject)) {
+            if (subject !== queue.shift()) return "NO";
+          }
+        }
+        if (queue.length > 0) return "NO";
+        return answer;
+
+        return answer;
+      }
+
+      let a = "CBA";
+      let b = "CBDAGE";
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
