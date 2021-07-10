@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function count(stable, dist) {
+        let count = 1;
+        let endPoint = stable[0];
+
+        for (let i = 1; i < stable.length; i++) {
+          if (stable[i] - endPoint >= dist) {
+            count++;
+            endPoint = stable[i];
+          }
+        }
+        return count;
+      }
+
+      function solution(c, stable) {
+        let answer;
+        stable.sort((a, b) => a - b);
+
+        let lt = 1;
+        let rt = stable[stable.length - 1];
+
+        while (lt <= rt) {
+          let mid = parseInt((lt + rt) / 2);
+          if (count(stable, mid) >= c) {
+            // 만족하면 더 작은 숫자들은 다 답이 되기 때문에 찾아볼 필요 없음
+            answer = mid;
+            lt = mid + 1;
+          } else {
+            rt = mid - 1;
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [1, 2, 8, 4, 9];
+      let arr2 = [5, 6, 8, 12, 14];
+      console.log(solution(3, arr));
+      console.log(solution(3, arr2));
+    </script>
+  </body>
+</html>
