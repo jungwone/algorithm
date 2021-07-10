@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function count(arr, num) {
+        let sum = 0;
+        let count = 1;
+        for (let i of arr) {
+          if (sum + i <= num) {
+            sum += i;
+          } else {
+            sum = i;
+            count++;
+          }
+        }
+        return count;
+      }
+
+      function solution(m, songs) {
+        let answer;
+        let lt = Math.max(...songs);
+        let rt = 0;
+        songs.forEach((song) => {
+          rt += song;
+        });
+        answer = rt;
+
+        while (lt <= rt) {
+          let mid = parseInt((lt + rt) / 2); // 27
+          if (count(songs, mid) <= m) {
+            answer = mid;
+            rt = mid - 1;
+          } else {
+            lt = mid + 1;
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>
