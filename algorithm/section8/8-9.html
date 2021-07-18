@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, arr) {
+        let answer = Number.MAX_SAFE_INTEGER;
+        let n = arr.length;
+        function DFS(L, sum) {
+          if (sum > m) return;
+          if (L > sum) return; // 가장 최소단위인 1원짜리로 sum만큼 하면 끝나기 때문에 그 이상은 불필요
+          if (sum === m) {
+            answer = Math.min(L, answer);
+          } else {
+            for (let i = 0; i < n; i++) {
+              DFS(L + 1, sum + arr[i]);
+            }
+          }
+        }
+        DFS(0, 0);
+        return answer;
+      }
+
+      let arr = [1, 2, 5];
+      console.log(solution(15, arr));
+    </script>
+  </body>
+</html>
